@@ -396,7 +396,9 @@ file_name=input_file.dcimg>
         if self._file_header['format_version'] == 0x7:
             sess_dtype = self.SESS_HDR_DTYPE
             self.fmt_version = self.FMT_OLD
-        elif self._file_header['format_version'] == 0x1000000 or self._file_header['format_version'] == 0x2000000:
+        elif (self._file_header['format_version'] == 0x1000000 or 
+              self._file_header['format_version'] == 0x2000000 or
+              self._file_header['format_version'] == 0x1050000):  # Add explicit support for v1.5
             self.fmt_version = self.FMT_NEW
             sess_dtype = self.NEW_SESSION_HEADER_DTYPE
         else:
